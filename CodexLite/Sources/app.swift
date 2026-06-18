@@ -1,5 +1,6 @@
 import SwiftUI
 import Foundation
+import ServiceManagement
 
 @main
 struct CodexLiteApp: App {
@@ -24,6 +25,11 @@ struct CodexLiteApp: App {
             }
             
             Toggle("Show Remaining Quota", isOn: $showRemaining)
+            
+            Toggle("Launch at Login", isOn: Binding(
+                get: { viewModel.isLaunchAtLoginEnabled },
+                set: { _ in viewModel.toggleLaunchAtLogin() }
+            ))
 
             Divider()
             
@@ -55,6 +61,7 @@ struct LimitModel: Equatable {
 class QuotaViewModel: ObservableObject {
     @Published var availableModels: [LimitModel] = []
     @Published var allLimits: [String: (primary: Int?, secondary: Int?)] = [:]
+    @Published var isLaunchAtLoginEnabled: Bool = SMAppService.mainApp.status == .enabled
     
     private var timer: Timer?
 
@@ -63,6 +70,20 @@ class QuotaViewModel: ObservableObject {
         // Update every 4 minutes
         timer = Timer.scheduledTimer(withTimeInterval: 240, repeats: true) { [weak self] _ in
             Task { await self?.fetch() }
+        }
+    }
+    
+    func toggleLaunchAtLogin() {
+        do {
+            if SMAppService.mainApp.status == .enabled {
+                try SMAppService.mainApp.unregister()
+                isLaunchAtLoginEnabled = false
+            } else {
+                try SMAppService.mainApp.register()
+                isLaunchAtLoginEnabled = true
+            }
+        } catch {
+            print("Failed to toggle launch at login: \(error)")
         }
     }
 

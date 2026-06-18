@@ -20,4 +20,4 @@ def mask_rounded_rectangle(input_path, output_path):
     img.putalpha(mask)
     img.save(output_path, "PNG")
 
-mask_rounded_rectangle('/Users/jovi/.gemini/antigravity/brain/8cbdfa26-eccb-46d6-bbde-dd1392528be1/codex_quota_icon_final_1781756939941.png', 'icon.png')
+mask_rounded_rectangle('/Users/jovi/.gemini/antigravity/brain/8cbdfa26-eccb-46d6-bbde-dd1392528be1/codex_quota_icon_white_prompt_1781757119752.png', 'icon.png')
