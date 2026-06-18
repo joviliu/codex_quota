@@ -1,5 +1,9 @@
 # CodexLite
 
+<p align="center">
+  <img src="CodexLite/icon.png" width="150" alt="CodexLite App Icon">
+</p>
+
 CodexLite is a minimalist, native macOS menu bar application designed to display and monitor your Codex usage quota.
 
 ## Key Features
