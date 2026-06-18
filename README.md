@@ -13,9 +13,15 @@ CodexLite is a minimalist, native macOS menu bar application designed to display
 - **Seamless Multi-Model Support**: Dynamically parses all models supported by the Codex app-server (such as Codex, GPT-5.3-Codex-Spark, Anti-gravity, etc.), allowing you to switch between them effortlessly.
 - **Auto Refresh**: Silently updates your quota data in the background every 4 minutes.
 
+## Download
+
+**[⬇️ Download CodexLite.app.zip](https://github.com/joviliu/codex_quota/raw/main/CodexLite/CodexLite.app.zip)**
+
+*(After downloading, simply unzip and drag `CodexLite.app` to your Applications folder. Note: Since the app is not signed with an Apple Developer certificate, you may need to right-click the app and select "Open" the first time you run it.)*
+
 ## Installation
 
-1. The compiled application is available as `CodexLite.app` in the `CodexLite` directory.
+1. Download the app from the link above, or find the compiled `CodexLite.app` in the `CodexLite` directory.
 2. You can double-click to run it directly. If you want it to launch automatically at startup:
    - Drag `CodexLite.app` into your `Applications` folder.
    - Open macOS **System Settings** -> **General** -> **Login Items**.
