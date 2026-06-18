@@ -7,6 +7,12 @@ MACOS_DIR="${APP_DIR}/Contents/MacOS"
 
 # Create directory structure
 mkdir -p "$MACOS_DIR"
+mkdir -p "${APP_DIR}/Contents/Resources"
+
+# Copy AppIcon if exists
+if [ -f "AppIcon.icns" ]; then
+    cp AppIcon.icns "${APP_DIR}/Contents/Resources/AppIcon.icns"
+fi
 
 # Compile swift file
 # We don't strictly need -target arm64-apple-macosx15.0 if we build for the current machine, but it's safe.
@@ -24,6 +30,8 @@ cat > "${APP_DIR}/Contents/Info.plist" <<EOF
     <string>com.codexlite.mac</string>
     <key>CFBundleName</key>
     <string>${APP_NAME}</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
     <key>CFBundleVersion</key>
     <string>1.0</string>
     <key>CFBundleShortVersionString</key>
